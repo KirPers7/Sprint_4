@@ -1,34 +1,30 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import models.MainPage;
+import models.pageobjects.MainPage;
 import models.pageobjects.ConfirmationPage;
 import models.pageobjects.Created;
 import models.pageobjects.CustomerPage;
 import models.pageobjects.RentConditionsPage;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 @RunWith(Parameterized.class)
-public class WebTest {
+public class TestAddNewOrderByButtonTop {
 
     private WebDriver driver;
 
-    //Ответ на вопрос 1
-    private static final By ANSWER_ON_FIRST_QUESTION = By.id("accordion__panel-0");
 
     private final String nameCustomer;
     private final String surnameCustomer;
     private final String address;
     private final String phone;
 
-    public WebTest(String nameCustomer, String surnameCustomer, String address, String phone) {
+    public TestAddNewOrderByButtonTop(String nameCustomer, String surnameCustomer, String address, String phone) {
         this.nameCustomer = nameCustomer;
         this.surnameCustomer = surnameCustomer;
         this.address = address;
@@ -54,20 +50,6 @@ public class WebTest {
         driver = new FirefoxDriver();
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-    }
-
-    @Test
-    public void checkFindImportantQuestions() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.findImportantQuestion();
-        //new WebDriverWait(driver, 10)
-                //.until(ExpectedConditions.visibilityOfElementLocated(CLICK_ON_FIRST_QUESTION));
-         //WebElement element = driver.findElement(CLICK_ON_FIRST_QUESTION);
-        //((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        //driver.findElement(CLICK_ON_FIRST_QUESTION).click();
-        String actual = driver.findElement(ANSWER_ON_FIRST_QUESTION).getText();
-        String expected = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-        Assert.assertEquals("Текст не соответствует ожидаемому", expected, actual);
     }
 
     @Test

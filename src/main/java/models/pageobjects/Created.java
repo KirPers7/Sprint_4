@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Created {
-    public static final By ORDER_CREATED = By.xpath(".//div[text()='Заказ оформлен']");
+    private static final By ORDER_CREATED = By.xpath(".//div[text()='Заказ оформлен']");
 
     private final WebDriver driver;
 

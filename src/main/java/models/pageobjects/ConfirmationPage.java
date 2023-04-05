@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ConfirmationPage {
     //Кнопка подтверждения создания нового заказа
-    public static final By CONFIRMATION_YES_BUTTON = By.xpath(".//button[text() = 'Да']");
+    private static final By CONFIRMATION_YES_BUTTON = By.xpath(".//button[text() = 'Да']");
 
     private final WebDriver driver;
 
