@@ -1,23 +1,15 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
 import models.pageobjects.MainPage;
 import models.pageobjects.ConfirmationPage;
 import models.pageobjects.Created;
 import models.pageobjects.CustomerPage;
 import models.pageobjects.RentConditionsPage;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 
 @RunWith(Parameterized.class)
-public class TestAddNewOrderByButtonTop {
-
-    private WebDriver driver;
-
+public class TestAddNewOrderByButtonTop extends TestBase {
 
     private final String nameCustomer;
     private final String surnameCustomer;
@@ -39,19 +31,6 @@ public class TestAddNewOrderByButtonTop {
         };
     }
 
-
-    @Before
-    public void setUp () {
-        //ChromeOptions options = new ChromeOptions();
-        //options.addArguments("--remote-allow-origins=*");
-        //WebDriverManager.chromedriver().setup();
-        WebDriverManager.firefoxdriver().setup();
-        //driver = new ChromeDriver();
-        driver = new FirefoxDriver();
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open();
-    }
-
     @Test
     public void createNewOrder() {
         MainPage mainPage = new MainPage(driver);
@@ -65,11 +44,4 @@ public class TestAddNewOrderByButtonTop {
         Created created = new Created(driver);
         created.checkOrderCreated();
     }
-
-
-    @After
-    public void tearDown() {
-        driver.quit();
-    }
-
 }
